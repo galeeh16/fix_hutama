@@ -20,6 +20,9 @@
   <!-- MYCSS -->
   <link rel="stylesheet" href="<?= base_url('assets/css/mycss.css'); ?>">
 
+  <!-- IMAGE HOVER -->
+  <link rel="stylesheet" href="<?= base_url('assets/css/imagehover.min.css')?>">
+
   <!-- Javascript -->
   <script src="<?= base_url('assets/vendor/jquery/jquery.min.js'); ?>"></script>
   <script src="<?= base_url('assets/vendor/bootstrap/js/bootstrap.min.js'); ?>"></script>
@@ -31,20 +34,25 @@
   <style>
     @font-face {
       font-family: 'OpenSans';
-      src: url('<?php echo base_url('assets/vendor/font/Open_Sans/OpenSans-Regular.ttf'); ?>');
+      src: url('<?php echo base_url('assets/vendor/font/OpenSans/OpenSans-Regular.ttf'); ?>');
       scroll-behavior: smooth;
     }
     @font-face {
-      font-family: 'OpenSansLight';
-      src: url('<?php echo base_url('assets/vendor/font/Open_Sans/OpenSans-Light.ttf'); ?>');
+      font-family: 'Quicksand';
+      src: url('<?php echo base_url('assets/vendor/font/Quicksand-Regular.ttf'); ?>');
+      scroll-behavior: smooth;
+    }
+    @font-face {
+      font-family: 'Raleway';
+      src: url('<?php echo base_url('assets/vendor/font/Raleway/Raleway-Regular.ttf'); ?>');
       scroll-behavior: smooth;
     }
     * {
-      font-family: 'OpenSans', 'Poppins', sans-serif;
+      font-family: 'OpenSans', sans-serif;
     }
     a, a:link, a:visited { color: #3cad51; transition: 0.3s; }
     a:hover { color: #33b6a3; }
-    .open { font-family: 'OpenSans' !important; }
+    .open { font-family: 'Raleway' !important; }
     .ls-1 { letter-spacing: 1px; }
     .bold { font-weight: bold; }
     .uppercase { text-transform: uppercase; }
@@ -52,32 +60,53 @@
     .lh-32 { line-height: 32px; }
     .ti { text-indent: 2em; }
     /* .gold { color: #9a932f; } */
-    .gold { color: #9a9325; }
-    .green { color: #3eac4f; }
-    .black { color: #292929; }
+    .gold { color: #B9B245; }
+    .green { color: #8C842F; }
+    .black { color: #161616; }
     .gray { color: #727272; }
-    .f-18 { font-size: 18px; }
-    .f-16 { font-size: 16px; }
-    .f-15 { font-size: 15px; }
     .thin { font-weight: 100 !important; }
+    p {
+      font-size: 16px;
+      line-height: 30px;
+      margin: 0;
+    }
     h2 { font-size: 26px; }
-    hr {border: 0.5px solid #BEB96C; }
+    hr { border: 0.5px solid #A59F3D; }
+
+    @media (min-width: 768px) {
+      html, body{
+        font-size: 16px;
+      }
+      .f-18 { font-size: 18px !important; }
+      .f-16 { font-size: 16px !important; }
+      .f-15 { font-size: 15px; }
+    }
+
+    @media (max-width: 420px) {
+      html, body {
+        font-size: 14px !important;
+      }
+      .f-18 { font-size: 14px !important; }
+      .f-16 { font-size: 14px !important; }
+      .f-15 { font-size: 14px; }
+       p {
+        font-size: 14px;
+        line-height: 28px;
+      }
+      hr {border: 0.5px solid #ddd; }
+      .large { font-size: 14px; }
+      h2 { font-size: 16px; }
+    }
+
     html, body{
-      font-family: 'OpenSans', 'Poppins', sans-serif;
-      font-size: 14px;
-      color: #737373 !important;
+      color: #373737 !important;
       background-color: #FFF;
       box-sizing: border-box;
     }
-    p { line-height: 28px; }
     .mt-1 { margin-top: 1em; }
     .mt-2 { margin-top: 2em; }
     .mt-3 { margin-top: 3em; }
     div.jumbotron, div.well, .panel{
-      /* -moz-box-shadow: 0 1px 4px 0px rgba(0, 0, 0, 0.2); */
-      /* -webkit-box-shadow: 0 1px 4px 0px rgba(0, 0, 0, 0.2); */
-      /* box-shadow: 0 1px 4px 0px rgba(0, 0, 0, 0.2); */
-      /* box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); */
       border: 0.5px solid #eee;
     }
     .container-fluid div.jumbotron, .container div.jumbotron {
@@ -93,58 +122,83 @@
     }
     div.navbar-btn a.btn-sign-in {
       color: #f5f4f4 !important;
+      font-family: 'Raleway' !important;
       background-color: #36a14a;
       padding: 5px 30px;
       border: none;
       border-radius: 50px;
       display: inline-block;
+      letter-spacing: 1px;
       margin: 0px;
-        -webkit-transition: background-color 0.4s ease-in;
-        -moz-transition: background-color 0.4s ease-in;
-        -o-transition: background-color 0.4s ease-in;
+      -webkit-transition: background-color 0.4s ease-in;
+      -moz-transition: background-color 0.4s ease-in;
+      -o-transition: background-color 0.4s ease-in;
       transition: background-color 0.4s ease-in;
     }
 
     div.navbar-btn a.btn-sign-in:hover {
       color: #fff !important;
-      background-color: #0f9127;
+      background-color: #18A67C;
     }
     /* .navbar.navbar-default {
       background: -webkit-linear-gradient(-45deg, #57cfb0, #2ab5d3);
       background: linear-gradient(-45deg, #57cfb0, #2ab5d3);
     } */
     .navbar.navbar-default .brand a {
+      font-family: 'Quicksand' !important;
       color: #36a14a;
       font-size: 28px;
       letter-spacing: 1px;
-      font-weight: 700;
-      text-shadow: 1px 1px rgba(0,0,0,0.5);
+      font-weight: bold;
+      /*text-shadow: 1px 1px rgba(0,0,0,0.5);*/
     }
     .navbar .brand {
       background: transparent !important;
-      font-family: 'OpenSans';
       padding: 20px 40px;
       letter-spacing: 1px;
     }
     .navbar-link a {
       color: #373737 !important;
       font-size: 14px;
-      font-family: 'OpenSans';
+      font-family: 'Raleway';
       font-weight: 600;
       letter-spacing: 1px;
       text-transform: uppercase;
     }
+    .mb-1 { margin-bottom: 1em; }
 
-    .navbar-default .navbar-nav>.active>a,
-    .navbar-default .navbar-nav>.active>a:focus,
-    .navbar-default .navbar-nav>.active>a:hover {
+    .navbar-default .navbar-nav.my-navbar-custom>.active>a,
+    .navbar-default .navbar-nav.my-navbar-custom>.active>a:focus,
+    .navbar-default .navbar-nav.my-navbar-custom>.active>a:hover {
       color: #3cad51 !important;
       background-color: #FFF;
       transition: 0.3s;
     }
-    .navbar-link:hover a {
+    .my-navbar .navbar-link:hover a {
       color: #3cad51 !important;
     }
+    .navbar-default.my-navbar  .navbar-nav li::before {
+      content: '';
+      height: 0;
+      width: 0;
+      right: 0;
+      left: 15px;
+      bottom: 14px;
+      position: absolute;
+      text-align: center;
+      border-bottom: 2px solid #3cad51;
+      z-index: 22;
+      transition: 0.3s;
+      transform: scaleX(0); 
+    }
+    .navbar-default .navbar-nav.my-navbar-custom li:hover::before {
+      width: calc(100% - 30px);
+      transform: scaleX(1);
+    }
+    .navbar-default .navbar-nav.my-navbar-custom li.active::before {
+      width: calc(100% - 30px);
+      transform: scaleX(1);
+     }
   </style>
 </head>
 
@@ -153,7 +207,7 @@
   <div id="wrapper">
 
     <!-- NAVBAR -->
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-default my-navbar navbar-fixed-top">
       <div class="navbar-header brand" style="margin-left: 80px;">
          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
           <span class="icon-bar"></span>
@@ -167,18 +221,18 @@
       <div class="container">
 
       <div id="navbar-menu" >
-        <ul class="nav navbar-nav" style="margin-left: 100px;">
+        <ul class="nav navbar-nav my-navbar-custom" style="margin-left: 100px;">
           <li class="navbar-link active">
-            <a href="#home" title="Home">Home</a>
+            <a href="#home">Home</a>
           </li>
           <li class="navbar-link">
-            <a href="#info" title="Informasi Penyakit">Informasi Penyakit</a>
+            <a href="#info">Informasi Penyakit</a>
           </li>
           <li class="navbar-link">
-            <a href="#about-us" title="Tentang Kami">Tentang Kami</a>
+            <a href="#about-us">Tentang Kami</a>
           </li>
           <li class="navbar-link">
-            <a href="#bantuan" title="Bantuan">Bantuan</a>
+            <a href="#bantuan">Bantuan</a>
           </li>
         </ul>
 
@@ -199,7 +253,7 @@
                 </li>
                 <li class="divider"></li>
                 <li>
-                  <a href="<?= base_url('member/diagnose'); ?>"><i class="lnr lnr-bug"></i> <span>Diagnose</span></a>
+                  <a href="<?= base_url('member/home'); ?>"><i class="lnr lnr-bug"></i> <span>Diagnose</span></a>
                 </li>
                 <li class="divider"></li>
                 <li>
@@ -214,7 +268,7 @@
         </ul>
       <?php else : ?>
          <div class="navbar-btn navbar-btn-right">
-          <a class="btn btn-sign-in" id="btn-grad" href="<?= base_url('sign-in'); ?>" title="Masuk ke aplikasi"><span>SIGN IN <i class="fa fa-sign-in"></i></span></a>
+          <a class="btn btn-sign-in" id="btn-grad" href="<?= base_url('sign-in'); ?>"><span class="open">SIGN IN <i class="fa fa-sign-in"></i></span></a>
          </div>
       <?php endif ?>
       </div>

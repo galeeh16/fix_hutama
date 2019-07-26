@@ -91,9 +91,16 @@ class Model_gejala extends CI_Model {
     return $this->db->get()->row();
   }
 
-  function ngawur() {
+  function get_where($where) {
+		$this->db->where('id_gejala', $where);
+		$query = $this->db->get($this->table);
 
-  }
+		if($query->num_rows() > 0) {
+			return $query->row();
+		} else {
+			return false;
+		}
+	}
 
 
 }

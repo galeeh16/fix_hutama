@@ -27,16 +27,16 @@
 			text-align: center;
 			vertical-align: middle !important;
 		}
-		/* @font-face {
-			font-family: 'poppins';
-			src: url(<?= base_url('assets/vendor/font/Poppins-Regular.ttf'); ?>);
-		} */
+		 @font-face {
+			font-family: 'Quicksand';
+			src: url(<?= base_url('assets/vendor/font/Muli/Muli-Regular.ttf'); ?>);
+		} 
 		@font-face {
       font-family: 'OpenSans';
-      src: url('<?php echo base_url('assets/vendor/font/Open_Sans/OpenSans-Regular.ttf'); ?>');
+      src: url('<?php echo base_url('assets/vendor/font/OpenSans/OpenSans-Regular.ttf'); ?>');
     }
 	  html, body{
-      font-family: 'OpenSans', 'Poppins', sans-serif;
+      font-family: 'OpenSans', 'Quicksand', 'Poppins', sans-serif;
       font-size: 14px;
       color: #4f4d4d !important;
     }

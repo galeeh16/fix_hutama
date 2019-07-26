@@ -17,6 +17,9 @@
       <div id="navbar-menu">
         <ul class="nav navbar-nav">
           <li class="navbar-link">
+            <a href="javascript:void(0);" title="Home" class="active">Diagnosa Penyakit</a>
+          </li> 
+          <!-- <li class="navbar-link">
             <a href="<?php echo base_url('home') ?>" title="Home" class="active"><span class="lnr lnr-home"></span> Home</a>
           </li>    
           <li class="navbar-link">
@@ -27,7 +30,7 @@
           </li>    
           <li class="navbar-link">
             <a href="<?php echo base_url('tentang-kami') ?>" title="Tentang Kami"><span class="lnr lnr-code"></span> Tentang Kami</a>
-          </li>    
+          </li>     -->
         </ul>
 
       <?php if($this->session->has_userdata('logged_in')) { ?>
@@ -47,7 +50,7 @@
                 </li>
                 <li class="divider"></li>
                 <li>
-                  <a href="<?= base_url('member/diagnose'); ?>"><i class="lnr lnr-bug"></i> <span>Diagnose</span></a>
+                  <a href="<?= base_url('member/home'); ?>"><i class="lnr lnr-bug"></i> <span>Diagnose</span></a>
                 </li>
                 <li class="divider"></li>
                 <li>
@@ -74,11 +77,11 @@
 <div class="container" style="margin-top: 110px">
 	<div class="panel">
 		<div class="panel-heading">
-			<h4 class="lead">HOME MEMBER</h4>
+			<h4 class="lead">Form Gejala</h4>
 			<div class="row">
 				<div class="col-md-6">
-					<div class="alert alert-info alert-dismissable" id="info-msg">
-						<button type="button" class="close" data-dismiss="alert" title="Ok saya mengerti">&times;</button>
+					<div class="alert alert-info alert-dismissable">
+						<button type="button" class="close" data-dismiss="alert" title="Ok saya mengerti!" data-toggle="tooltip" data-placement="right">&times;</button>
 						<p><i class="fa fa-info-circle"></i> Pilih gejala dengan mencentang checkbox yang tersedia!</p>
 					</div>
 					<?= $this->session->flashdata('err'); ?>
@@ -89,31 +92,36 @@
 		<div class="panel-body">
 			<!-- ROW -->
 			<div class="row">
-				<!-- FORM -->
-				<?php echo form_open('dempster/hitung'); ?>
-				<?php $no = 0; $nn = 15; ?>
-				<?php foreach ($gejala as $key => $value): ?>
-					<?php if(($key % 2) == 0): ?>
-						<div class="col-md-6 col-sm-12">
-							<div class="form-group">
-								<?php echo $no += 1; ?>
-									<input type="checkbox" name="id_gejala[]" value="<?php echo $value['id_gejala'] ?>"> <?php echo $value['nama_gejala'] ?>
-							</div>
-						</div>
-					<?php else: ?>
-						<div class="col-md-6 col-sm-12">
-							<div class="form-group">
-								<?php echo $nn += 1; ?>
-									<input type="checkbox" name="id_gejala[]" value="<?php echo $value['id_gejala'] ?>"> <?php echo $value['nama_gejala'] ?>
-							</div>
-						</div>
-					<?php endif ?>
-				<?php endforeach ?>
-				<div class="form-group">
-					<input type="submit" class="btn btn-primary" name="proses" value="Proses">
-				</div>
-				</form>
-				<!-- END FORM -->
+				<!-- form open -->
+        <?php echo form_open('diagnosa/hitung'); ?>
+
+          <?php $no = 0; $nn = 23; ?>
+          <?php foreach ($gejala as $key => $val): ?>
+            <?php if(($key%2) === 0): ?>
+            <div class="col-md-6">
+              <div class="form-group">
+                <?php echo $no += 1; ?>
+                <input type="checkbox" name="id_gejala[<?php echo $val['id_gejala'] ?>]" value="ya"> <?php echo $val['nama_gejala'] ?>
+              </div>
+            </div>
+            <?php else: ?>
+            <div class="col-md-6">
+              <div class="form-group">
+                <?php echo $nn += 1; ?>
+                <input type="checkbox" name="id_gejala[<?php echo $val['id_gejala'] ?>]" value="ya"> <?php echo $val['nama_gejala'] ?>
+              </div>
+            </div>
+            <?php endif ?>
+          <?php endforeach ?>
+
+          <div class="col-md-12">
+            <center>
+              <?php echo form_submit('proses', 'Proses', ['class' => 'btn btn-primary']); ?>
+            </center>
+          </div>
+
+          <?php echo form_close(); ?>
+          <!-- end form -->
 			</div>
 			<!-- END ROW -->
 		</div>

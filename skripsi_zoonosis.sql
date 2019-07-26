@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.2
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 23, 2018 at 07:04 PM
--- Server version: 10.1.34-MariaDB
--- PHP Version: 7.2.8
+-- Generation Time: Jul 01, 2019 at 03:59 PM
+-- Server version: 10.1.36-MariaDB
+-- PHP Version: 7.2.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -39,36 +39,51 @@ CREATE TABLE `gejala` (
 --
 
 INSERT INTO `gejala` (`id_gejala`, `kode_gejala`, `nama_gejala`) VALUES
-(1, 'G01', 'Nafsu Makan Berkurang'),
-(2, 'G02', 'Ular Terlihat Lesu'),
-(3, 'G03', 'Berat Badan Menurun'),
-(4, 'G04', 'Pembengkakan Pada Mulut Ular'),
-(5, 'G05', 'Pembengkakan Pada Gusi Ular'),
-(6, 'G06', 'Perubahan Warna Pada Mulut Ular'),
-(7, 'G07', 'Badan Ular Terlihat Membengkak'),
-(8, 'G08', 'BAB Jarang'),
-(9, 'G09', 'BAB Encer'),
-(10, 'G10', 'Ular Muntah-muntah'),
-(11, 'G11', 'Terdapat Kutu/Caplak di Badan Ular'),
-(12, 'G12', 'Terdapat Gelembung Pada Hidung Ular'),
-(13, 'G13', 'Bernafas Dengan Mulut Terbuka'),
-(14, 'G14', 'Keluar Cairan Dari Hidung/Mulut'),
-(15, 'G15', 'Nafas Yang Berbunyi(Mendengkur)'),
-(16, 'G16', 'Selalu Melihat Keatas(Stargazing)'),
-(17, 'G17', 'Ular Tidak Mampu Mendirikan Badan'),
-(18, 'G18', 'Selalu Tergolek Kearah Belakang'),
-(19, 'G19', 'Tidak Merespon Gerakan'),
-(20, 'G20', 'Besar Mata Pupil Tidak Seimbang'),
-(21, 'G21', 'Ular Mengalami Kelumpuhan'),
-(22, 'G22', 'Lendir Kental Dihidung'),
-(23, 'G23', 'Bengkak Dibawah Mulut'),
-(24, 'G24', 'Ada Massa Padat Di Kloaka(Anus)'),
-(25, 'G25', 'Rahang Bawah Bernanah'),
-(26, 'G26', 'Ada Plak Kemerahan Di Gusi'),
-(27, 'G27', 'Ada Benjol Dirahang Atas'),
-(28, 'G28', 'Jalannya Berputar-putar'),
-(29, 'G29', 'Ada Jamur Dimulut '),
-(30, 'G30', 'Kepala Terpelinting');
+(1, 'G01', 'Panas Tubuh Tinggi'),
+(2, 'G02', 'Bulu Terlihat Kusam'),
+(3, 'G03', 'Lesu'),
+(4, 'G04', 'Nafsu Makan Hilang'),
+(5, 'G05', 'Berat Badan Menurun'),
+(6, 'G06', 'Pupil Mata Mengecil'),
+(7, 'G07', 'Tremor'),
+(8, 'G08', 'Lumpuh'),
+(9, 'G09', 'Muntah Diare'),
+(10, 'G10', 'Kematian Anak Kucing'),
+(11, 'G11', 'Bulu Pada Ujung Telinga Rontok'),
+(12, 'G12', 'Menggaruk - garuk Telingai'),
+(13, 'G13', 'Kulit Menebal, Keriput dan ditutupi dengan Remah A'),
+(14, 'G14', 'Rambut Rontok Dengan Pola Bulat Kemerahan'),
+(15, 'G15', 'Kulit Kemerahan dan Ada Serpihan Seperti Ketombe'),
+(16, 'G16', 'Bentuk Kuku Tidak Normal'),
+(17, 'G17', 'Terlihat Gelisah atau Takut'),
+(18, 'G18', 'Cepat Marah dan Mudah Menyerang Orang'),
+(19, 'G19', 'Demam'),
+(20, 'G20', 'Mulut berbusa'),
+(21, 'G21', 'Lemah'),
+(22, 'G22', 'Kejang'),
+(23, 'G23', 'Menggigil'),
+(24, 'G24', 'Sedikit Makan'),
+(25, 'G25', 'Nyeri Otot'),
+(26, 'G26', 'Sakit Tenggorokan'),
+(27, 'G27', 'Mudah Lelah'),
+(28, 'G28', 'Gangguan Penglihatan'),
+(29, 'G29', 'Muncul Ruam'),
+(30, 'G30', 'Terus Menjilat, Menggigit, dan Mengunyah Benda-Ben'),
+(31, 'G31', 'Sensitif Terhadap Sentuhan, Cahaya, dan Suara'),
+(32, 'G32', 'Suka Bersembunyi ditempat Gelap'),
+(33, 'G33', 'Bulu Pada Ujung Telinga Rontok'),
+(34, 'G34', 'Menggaruk - garuk Telinga'),
+(35, 'G35', 'Kulit Menebal, Keriput dan ditutupi dengan Remah A'),
+(36, 'G36', 'Rambut Rontok Dengan Pola Bulat Kemerahan'),
+(37, 'G37', 'Kulit Kemerahan dan Ada Serpihan Seperti Ketombe'),
+(38, 'G38', 'Lemah & Sempoyongan'),
+(39, 'G39', 'Seringkali Duduk atau Berdiri Dalam Keadaan Seteng'),
+(40, 'G40', 'Diare'),
+(41, 'G41', 'Unggas Merasa Haus Luar Biasa'),
+(42, 'G42', 'Jengger dan pial berwarna merah kehitaman sampai b'),
+(43, 'G43', 'Unggas bernafas dengan cepat dan sulit'),
+(44, 'G44', 'Tidak Makan'),
+(45, 'G45', 'Mata & Hidung Berair');
 
 -- --------------------------------------------------------
 
@@ -107,18 +122,22 @@ CREATE TABLE `penyakit` (
   `deskripsi_penyakit` text NOT NULL,
   `id_solusi` int(11) NOT NULL,
   `foto` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 --
 -- Dumping data for table `penyakit`
 --
 
 INSERT INTO `penyakit` (`id_penyakit`, `kode_penyakit`, `nama_penyakit`, `deskripsi_penyakit`, `id_solusi`, `foto`) VALUES
-(1, 'P01', 'Sariawan (Stomatitis)', 'Juga dikenal dengan sebutan mouth rot, ini adalah penyakit yang umum dijumpai pada ular peliharaan. Sewaktu bakteri memasuki mulut, bisa menyebabkan infeksi meliputi bagian mulut, gusi dan berpotensi juga menyerang bagian pencernaan ular    ', 1, 'sariawan.jpg'),
-(2, 'P02', 'IBD (Inclusion Body Disease)', 'IBD adalah salah satu penyakit paling berbahaya yang ditemui di ular peliharaan. Biasanya dijumpai di jenis boa dan python terutama pada jenis molurus dan boa constrictors. Tanda tanda berbeda pada tiap jenis tapi biasanya melibatkan gangguan saraf , tumor dan penyakit lainnya. Tanda khas dari gangguan saraf pada ular adalah keadaan dimana ular tidak bisa mendirikan badannya, selalu tergolek ke arah belakang, melihat ke atas (star gazing)', 2, 'ibd.JPG'),
-(3, 'P03', 'Sembelit (Constipation)', 'Pencernaan ular tergantung pada ukuran dan metabolismenya, bisa lebih lama, bisa juga lebih cepat, tapi apabila jadwal yang seharusnya sudah terlewati dan ular terlihat bengkak, lesu dan kurang nafsu makan itu mungkin disebabkan oleh sembelit', 3, 'sembelit.jpg'),
-(4, 'P04', 'Parasit (Parasites)', 'Penyakit yang disebabkan oleh parasite biasanya agak susah untuk dideteksi, gejala gejalanya biasanya muntah , kurang nafsu makan, berat badan yang menurun dan penampilan sakit dari ular', 4, 'parasit.jpg'),
-(5, 'P05', 'Flu (Influenza)', 'Flu sendiri adalah reaksi hewan terhadap perubahan suhu/kelembapan yaitu sekitar mulut dan hidung mengeluarkan lendir yang menggangu pernafasan. Seringkali ular yang terkena flu biasanya mogok makan. Meskipun ada ular yang terkena flu namun nafsu makannya tetap tinggi seperti retic dan water tiger. Namun, flu sendiri untuk ular harus cepat di tangani karena bila di biarkan bisa mengakibatkan kematian.', 5, 'flu.jpg');
+(1, 'P1', 'Toxoplasmosis', 'Toksoplasmosis adalah infeksi pada manusia yang ditimbulkan oleh parasit protozoa (organisme bersel satu) Toxoplasma gondii (T. gondii). Parasit ini seringkali terdapat pada kotoran kucing. ', 1, ''),
+(2, 'P2', 'Scabies', 'Scabies, juga dikenal dengan nama kudis atau gudik, adalah kondisi kulit gatal karena tungau bernama Sarcoptes scabiei. ', 1, ''),
+(3, 'P3', 'Jamur Ringworm (Dermatophytosis)', 'A. Etiologi Ringworm (Dermatophytosis) adalah infeksi kulit yang disebabkan oleh jamur. Ringworm dapat menyerang kulit di tubuh (tinea corporis), kulit dan rambut kepala (tinea capitis), area inguinalis (tinea cruris, juga disebut jock itch), atau kaki (tinea pedis, juga disebut athlete`s foot).', 1, ''),
+(4, 'P4', 'CSD (Cat Scratch Disease)', 'Cat Scratch Disease adalah kondisi kesehatan yang disebabkan oleh cakaran kucing yang terinfeksi bakteri Bartonella henselae. Bartonela hensale merupakan salah satu bakteri paling umum di dunia. Pasalnya sekitar 40 persen kucing dan anak kucing diketahui terinfeksi bakteri ini yang umumnya terdapat di mulut atau cakar kucing.', 1, ''),
+(5, 'P5', 'Rabies', 'Rabies adalah penyakit infeksi tingkat akut pada susunan saraf pusat yang disebabkan oleh virus rabies. Penyakit ini bersifat zoonotik, yaitu dapat ditularkan dari hewan ke manusia. Virus rabies ditularkan ke manusia melalu gigitan hewan misalnya oleh anjing.', 1, ''),
+(6, 'P6', 'Leptospirosis', 'Leptospirosis adalah penyakit yang disebabkan oleh bakteri Leptospira interrogans yang disebarkan melalui urine atau darah hewan yang terinfeksi bakteri ini. Beberapa jenis hewan yang dapat menjadi pembawa leptospirosis adalah anjing.', 1, ''),
+(7, 'P7', 'Lyme', '', 1, ''),
+(8, 'P8', 'Flu Burung', 'Flu burung adalah suatu penyakit menular yang disebabkan oleh virus influenza yang ditularkan oleh unggas yang dapat menyerang manusia.', 1, ''),
+(9, 'P9', 'Pssitacosis', 'Psittacosis adalah penyakit langka yang biasanya ditularkan burung kepada manusia dan disebabkan oleh kuman yang bernama Chlamydia psittaci. Pada umumnya infeksi terjadi kalau orang menghirup kumannya - biasanya dari tahi kering burung yang terkena.', 1, '');
 
 -- --------------------------------------------------------
 
@@ -138,45 +157,127 @@ CREATE TABLE `rules` (
 --
 
 INSERT INTO `rules` (`id_rules`, `id_penyakit`, `id_gejala`, `cf`) VALUES
-(1, 1, 1, 0.2),
-(2, 2, 1, 0.2),
-(3, 3, 1, 0.2),
-(4, 4, 1, 0.2),
-(5, 5, 1, 0.2),
-(6, 2, 2, 0.2),
-(7, 3, 2, 0.2),
-(8, 4, 2, 0.2),
-(9, 1, 3, 0.5),
-(10, 4, 3, 0.5),
-(11, 1, 4, 0.5),
-(12, 5, 4, 0.5),
-(13, 1, 5, 0.8),
-(14, 1, 6, 0.7),
-(15, 3, 7, 0.4),
-(16, 3, 8, 0.5),
-(17, 3, 9, 0.1),
-(18, 4, 10, 0.5),
-(19, 4, 11, 0.9),
-(20, 5, 12, 0.8),
-(21, 5, 13, 0.7),
-(22, 5, 14, 0.9),
-(23, 5, 15, 0.8),
-(24, 2, 16, 0.9),
-(25, 2, 17, 0.6),
-(26, 2, 18, 0.8),
-(27, 2, 19, 0.2),
-(28, 2, 20, 0.5),
-(29, 2, 21, 0.6),
-(30, 5, 22, 0.9),
-(31, 5, 23, 0.6),
-(32, 2, 24, 0.9),
-(33, 1, 25, 0.7),
-(34, 1, 26, 0.9),
-(35, 1, 27, 0.4),
-(36, 2, 28, 0.7),
-(37, 1, 29, 0.2),
-(38, 5, 29, 0.2),
-(39, 2, 30, 0.4);
+(1, 1, 1, 0.9),
+(2, 4, 1, 0.9),
+(3, 5, 1, 0.9),
+(4, 6, 1, 0.9),
+(5, 7, 1, 0.9),
+(6, 8, 1, 0.9),
+(7, 9, 1, 0.9),
+(8, 1, 2, 0.9),
+(9, 2, 2, 0.9),
+(10, 3, 2, 0.9),
+(11, 5, 2, 0.9),
+(12, 6, 2, 0.9),
+(13, 8, 2, 0.9),
+(14, 9, 2, 0.9),
+(15, 1, 3, 0.9),
+(16, 2, 3, 0.9),
+(17, 3, 3, 0.9),
+(18, 4, 3, 0.9),
+(19, 4, 3, 0.9),
+(20, 6, 3, 0.9),
+(21, 7, 3, 0.9),
+(22, 8, 3, 0.9),
+(23, 9, 3, 0.9),
+(24, 1, 4, 0.9),
+(25, 2, 4, 0.9),
+(26, 4, 4, 0.9),
+(27, 6, 4, 0.9),
+(28, 7, 4, 0.9),
+(29, 8, 4, 0.9),
+(30, 9, 4, 0.9),
+(31, 1, 5, 0.8),
+(32, 2, 5, 0.8),
+(33, 3, 5, 0.8),
+(34, 4, 5, 0.8),
+(35, 6, 5, 0.8),
+(36, 7, 5, 0.8),
+(37, 8, 5, 0.8),
+(38, 1, 6, 0.3),
+(39, 6, 6, 0.3),
+(40, 8, 6, 0.3),
+(41, 1, 7, 0.3),
+(42, 5, 7, 0.3),
+(43, 7, 7, 0.3),
+(44, 1, 8, 0.3),
+(45, 7, 8, 0.3),
+(46, 8, 8, 0.3),
+(47, 1, 9, 0.2),
+(48, 6, 9, 0.2),
+(49, 1, 10, 0.2),
+(50, 2, 10, 0.2),
+(51, 2, 11, 0.1),
+(52, 2, 12, 0.2),
+(53, 3, 12, 0.2),
+(54, 2, 13, 0.1),
+(55, 3, 14, 0.1),
+(56, 2, 15, 0.2),
+(57, 3, 15, 0.2),
+(58, 2, 16, 0.1),
+(59, 2, 17, 0.1),
+(60, 5, 17, 0.1),
+(61, 5, 18, 0.1),
+(62, 1, 19, 0.7),
+(63, 4, 19, 0.7),
+(64, 5, 19, 0.7),
+(65, 6, 19, 0.7),
+(66, 7, 19, 0.7),
+(67, 8, 19, 0.7),
+(68, 9, 19, 0.7),
+(69, 5, 20, 0.1),
+(70, 1, 21, 0.5),
+(71, 4, 21, 0.5),
+(72, 5, 21, 0.5),
+(73, 6, 21, 0.5),
+(74, 8, 21, 0.5),
+(75, 5, 22, 0.2),
+(76, 1, 23, 0.3),
+(77, 5, 23, 0.3),
+(78, 7, 2, 0.3),
+(79, 1, 24, 0.6),
+(80, 4, 24, 0.6),
+(81, 6, 24, 0.6),
+(82, 7, 24, 0.6),
+(83, 8, 24, 0.6),
+(84, 9, 24, 0.6),
+(85, 4, 25, 0.2),
+(86, 7, 25, 0.2),
+(87, 8, 26, 0.2),
+(88, 9, 26, 0.2),
+(89, 1, 27, 0.3),
+(90, 2, 27, 0.3),
+(91, 7, 27, 0.3),
+(92, 5, 28, 0.1),
+(93, 3, 29, 0.1),
+(94, 5, 30, 0.1),
+(95, 5, 31, 0.1),
+(96, 5, 32, 0.1),
+(97, 2, 33, 0.1),
+(98, 2, 34, 0.1),
+(99, 2, 35, 0.1),
+(100, 3, 36, 0.1),
+(101, 2, 37, 0.2),
+(102, 3, 37, 0.2),
+(103, 1, 38, 0.4),
+(104, 6, 38, 0.4),
+(105, 7, 38, 0.4),
+(106, 9, 38, 0.4),
+(107, 8, 39, 0.1),
+(108, 1, 40, 0.2),
+(109, 8, 40, 0.2),
+(110, 8, 41, 0.2),
+(111, 9, 41, 0.2),
+(112, 8, 42, 0.1),
+(113, 8, 43, 0.2),
+(114, 9, 43, 0.2),
+(115, 1, 44, 0.5),
+(116, 5, 44, 0.5),
+(117, 7, 44, 0.5),
+(118, 8, 44, 0.5),
+(119, 9, 44, 0.5),
+(120, 1, 45, 0.2),
+(121, 9, 45, 0.2);
 
 -- --------------------------------------------------------
 
@@ -215,21 +316,17 @@ CREATE TABLE `users` (
   `handphone` varchar(20) NOT NULL,
   `level` enum('Admin','Member') NOT NULL,
   `photo` varchar(255) NOT NULL,
-  `pertanyaan` varchar(255) NOT NULL,
-  `jawaban` varchar(255) NOT NULL
+  `update_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id_user`, `username`, `password`, `name`, `address`, `handphone`, `level`, `photo`, `pertanyaan`, `jawaban`) VALUES
-(13, 'hutama', '123130040', 'Hutama Dewangga Mfckr', 'Maguwoharjo', '083213213217', 'Admin', 'user_32cbe47c46.jpg', '', ''),
-(34, 'dadadahehefasfa', '123130039', 'dadada', 'Seturan', '000231321321', 'Member', 'user_276ee49ae0.jpg', '', ''),
-(35, 'dadadahehefa', '123130039', 'dadada', 'Seturan', '000231321321', 'Member', 'user_84e8701316.jpg', '', ''),
-(37, 'gagagaga', '12345', 'Hutama Dewangga M', 'gagagagaa', '000231321321', 'Member', 'user_1cc8d26311.jpg', '', ''),
-(38, 'dadada', 'dadadad', 'dadada', 'dadada', '083213213217', 'Member', 'user_ba18588e2e.jpg', '', ''),
-(39, 'hutama14', '123130040', 'Hutama Dewangga', '', '', 'Member', '', '', '');
+INSERT INTO `users` (`id_user`, `username`, `password`, `name`, `address`, `handphone`, `level`, `photo`, `update_at`) VALUES
+(13, 'hutama', '123130040', 'Hutama Dewangga Mfckr', 'Maguwoharjo', '083213213217', 'Admin', 'user_32cbe47c46.jpg', '2018-12-23 11:24:03'),
+(39, 'hutama14', '123130040', 'Hutama Dewangga', 'gagagagaa', '082342142142', 'Member', 'user_80cdbef432.png', '2018-12-31 15:12:40'),
+(40, 'galeeh', '123130039', 'Galih Anggoro Jati', 'jakarta', '082382253383', 'Member', 'user_5e91432fbb.jpg', '0000-00-00 00:00:00');
 
 --
 -- Indexes for dumped tables
@@ -252,8 +349,8 @@ ALTER TABLE `news`
 -- Indexes for table `penyakit`
 --
 ALTER TABLE `penyakit`
-  ADD PRIMARY KEY (`id_penyakit`),
-  ADD KEY `id_solusi` (`id_solusi`);
+  ADD PRIMARY KEY (`id_penyakit`) USING BTREE,
+  ADD KEY `id_solusi` (`id_solusi`) USING BTREE;
 
 --
 -- Indexes for table `rules`
@@ -283,7 +380,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `gejala`
 --
 ALTER TABLE `gejala`
-  MODIFY `id_gejala` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id_gejala` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `news`
@@ -295,13 +392,13 @@ ALTER TABLE `news`
 -- AUTO_INCREMENT for table `penyakit`
 --
 ALTER TABLE `penyakit`
-  MODIFY `id_penyakit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_penyakit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `rules`
 --
 ALTER TABLE `rules`
-  MODIFY `id_rules` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id_rules` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
 
 --
 -- AUTO_INCREMENT for table `solusi`
@@ -313,7 +410,7 @@ ALTER TABLE `solusi`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- Constraints for dumped tables
@@ -330,13 +427,6 @@ ALTER TABLE `news`
 --
 ALTER TABLE `penyakit`
   ADD CONSTRAINT `penyakit_ibfk_1` FOREIGN KEY (`id_solusi`) REFERENCES `solusi` (`id_solusi`);
-
---
--- Constraints for table `rules`
---
-ALTER TABLE `rules`
-  ADD CONSTRAINT `rules_ibfk_1` FOREIGN KEY (`id_gejala`) REFERENCES `gejala` (`id_gejala`),
-  ADD CONSTRAINT `rules_ibfk_2` FOREIGN KEY (`id_penyakit`) REFERENCES `penyakit` (`id_penyakit`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

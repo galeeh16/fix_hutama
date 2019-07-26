@@ -15,7 +15,7 @@
 
       <div id="navbar-menu">
         <ul class="nav navbar-nav">
-          <li class="navbar-link">
+          <!-- <li class="navbar-link">
             <a href="<?php echo base_url('home') ?>" title="Home" class="active"><span class="lnr lnr-home"></span> Home</a>
           </li>    
           <li class="navbar-link">
@@ -26,7 +26,7 @@
           </li>    
           <li class="navbar-link">
             <a href="<?php echo base_url('tentang-kami') ?>" title="Tentang Kami"><span class="lnr lnr-code"></span> Tentang Kami</a>
-          </li>    
+          </li>     -->
         </ul>
 
       <?php if($this->session->has_userdata('logged_in')) { ?>
@@ -46,7 +46,7 @@
                 </li>
                 <li class="divider"></li>
                 <li>
-                  <a href="<?= base_url('member/diagnose'); ?>"><i class="lnr lnr-bug"></i> <span>Diagnose</span></a>
+                  <a href="<?= base_url('member/home'); ?>"><i class="lnr lnr-bug"></i> <span>Diagnose</span></a>
                 </li>
                 <li class="divider"></li>
                 <li>

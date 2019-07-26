@@ -160,7 +160,6 @@
 
 	<!-- DATATABLE SCRIPT -->
 	<script type="text/javascript" language="javascript">
-		var dataTable = '';
 		var url, msg = '';
 
 		function getData(num) {

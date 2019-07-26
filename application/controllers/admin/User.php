@@ -240,9 +240,8 @@ class User extends CI_Controller {
 			$config['file_name']     = $file_name;
 
 			$this->load->library('upload', $config);
-
 			$this->upload->initialize($config);
-
+			
 			if($this->upload->do_upload('photo')) {
 				$this->upload->data();
 				return $file_name;

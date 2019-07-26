@@ -10,83 +10,78 @@ class Welcome extends CI_Controller {
 	}
 
 	public function index()	{
-		if($this->session->userdata('level') == 'Member') {
-			redirect('member/home','refresh');
-		} else {
+		// if($this->session->userdata('level') == 'Member') {
+		// 	redirect('member/home','refresh');
+		// } else {
 			$data['title'] = "Zoonosis";
-			$data['title'] = 'Zoonosis | Informasi Penyakit';
 			$data['penyakit'] = $this->Model_penyakit->get_all();
 
 			$this->load->view('pages/v_header', $data);
 			$this->load->view('pages/v_home', $data);
-		}
+		// }
 	}
 
 	public function sign_in() {
-		// $data['title'] = 'Zoonosis | Sign In';
-		// $this->load->view('pages/v_header', $data);
 		$this->load->view('pages/v_sign_in');
 	}
 
 	public function proses_login() {
 		if($this->input->post('masuk')) {
-			$username = $this->input->post('username');
-			$password = $this->input->post('password');
-			$remember = $this->input->post('remember_me');
+				$username = $this->input->post('username');
+				$password = $this->input->post('password');
+				$remember = $this->input->post('remember_me');
 
-			$cek_login = $this->Model_user->login($username, $password);
+				$cek_login = $this->Model_user->login($username, $password);
 
-			if($cek_login) {
-				if($remember) {
-					setcookie("username", $username, time()+(10*365*24*60), "/");
-					setcookie("password", $password, time()+(10*365*24*60), "/");
-					setcookie("remember", "remember", time()+(10*365*24*60), "/");
+				if($cek_login) {
+					if($remember) {
+						setcookie("username", $username, time() + (10*365*24*60), "/");
+						setcookie("password", $password, time() + (10*365*24*60), "/");
+						setcookie("remember", "remember", time() + (10*365*24*60), "/");
+					} else {
+						setcookie("username", "", time() + (10*365*24*60), "/");
+						setcookie("password", "", time() + (10*365*24*60), "/");
+						setcookie("remember", "", time() + (10*365*24*60), "/");
+					}
+
+					$session = [
+						'logged_in' => true,
+						'id' 			  => $cek_login->id_user,
+						'username'	=> $cek_login->username,
+						'name' 			=> $cek_login->name,
+						'address' 	=> $cek_login->address,
+						'handphone' => $cek_login->handphone,
+						'level' 		=> $cek_login->level,
+						'photo'			=> $cek_login->photo,
+						'status'    => true
+					];
+
+					$this->session->set_userdata($session);
+
+					if($this->session->userdata('level') == 'Admin') {
+						redirect('admin/dashboard','refresh');
+					} else if($this->session->userdata('level') == 'Member') {
+						redirect('member','refresh');
+					} else {
+						setcookie("username", "", time()+(10*365*24*60), "/");
+						setcookie("password", "", time()+(10*365*24*60), "/");
+						setcookie("remember", "", time()+(10*365*24*60), "/");
+
+						$this->session->set_flashdata('err', '<div class="alert alert-danger" role="alert"><center>Username atau password tidak valid! <i class="fa fa-exclamation-triangle"></i></center></div>');
+						redirect('sign-in');
+					}
 				} else {
 					setcookie("username", "", time()+(10*365*24*60), "/");
 					setcookie("password", "", time()+(10*365*24*60), "/");
 					setcookie("remember", "", time()+(10*365*24*60), "/");
+
+					$this->session->set_flashdata('err', '<div class="alert alert-danger" role="alert"><center> <i class="fa fa-exclamation-triangle"></i> Username atau password anda tidak valid!</center></div>');
+					redirect('sign-in');
 				}
-
-				$session = [
-					'logged_in' => true,
-					'id' 			  => $cek_login->id_user,
-					'username'	=> $cek_login->username,
-					'name' 			=> $cek_login->name,
-					'address' 	=> $cek_login->address,
-					'handphone' => $cek_login->handphone,
-					'level' 		=> $cek_login->level,
-					'photo'			=> $cek_login->photo,
-					'status'    => true
-				];
-
-				$this->session->set_userdata($session);
-
-				if($this->session->userdata('level') == 'Admin') {
-					redirect('admin/dashboard','refresh');
-				} else if($this->session->userdata('level') == 'Member') {
-					redirect('member','refresh');
-				} else {
-					setcookie("username", "", time()+(10*365*24*60), "/");
-					setcookie("password", "", time()+(10*365*24*60), "/");
-					setcookie("remember", "", time()+(10*365*24*60), "/");
-
-					$this->session->set_flashdata('err', '<div class="alert alert-danger" role="alert"><center>Username atau password tidak valid! <i class="fa fa-exclamation-triangle"></i></center></div>');
-					redirect('sign-in','refresh');
-				}
-			} else {
-				setcookie("username", "", time()+(10*365*24*60), "/");
-				setcookie("password", "", time()+(10*365*24*60), "/");
-				setcookie("remember", "", time()+(10*365*24*60), "/");
-
-				$this->session->set_flashdata('err', '<div class="alert alert-danger" role="alert"><center> <i class="fa fa-exclamation-triangle"></i> Username atau password anda tidak valid!</center></div>');
-				redirect('sign-in','refresh');
 			}
-		}
 	}
 
 	public function sign_up() {
-		$data['title'] = "Zoonosis | Sign Up";
-		$this->load->view('pages/v_header', $data);
 		$this->load->view('pages/v_sign_up');
 	}
 

@@ -44,16 +44,10 @@ class Model_rules extends CI_Model {
     return $query->result();
   }
 
-	function delete_rules_gejala($id_gejala)
-	{
-		$this->db->where('id_gejala', $id_gejala);
-		$this->db->delete($this->table);
-
-		if($this->db->affected_rows() > 0 ) {
-			return true;
-		} else {
-			return false;
-		}
+	function ambil_rules_gejala($where) {
+		$this->db->where('id_gejala', $where);
+		$this->db->join('penyakit', 'penyakit.id_penyakit = rules.id_penyakit', 'left');
+		return $this->db->get($this->table)->result_array();
 	}
 
 	function delete_rules_penyakit($id) {
@@ -71,6 +65,11 @@ class Model_rules extends CI_Model {
     $this->db->select('COUNT(*) AS jumlah');
     $this->db->from($this->table);
     return $this->db->get()->row();
+  }
+
+  function ambil_rules($id) {
+  	$this->db->where('id_gejala', $id);
+  	return $this->db->get($this->table)->result_array();
   }
 
 

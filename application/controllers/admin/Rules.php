@@ -90,7 +90,7 @@ class Rules extends CI_Controller {
 
 				$no++;
 			}
-
+			
 			$html .= '</tbody></table>';
 			$html .= '<center>';
 			$html .= '<ul class="pagination">';
@@ -117,16 +117,12 @@ class Rules extends CI_Controller {
 			} else {
 				$html .= '<li class="disabled"><span style="cursor:pointer;">Next</span><li>';
 			}
-
 			$html .= '</ul>';
 			$html .= '</center>';
-
 		}
-
 		echo $html;
 		die;
 	}
-
 
 }
 

@@ -90,8 +90,58 @@
 				</div>
 			</div>
 			<!-- END MAIN CONTENT -->
+
 		</div>
 		<!-- END MAIN -->
+
+		<!-- MODAL RULES -->
+		<div class="modal fade" id="modal-rules" data-keyboard="false" data-backdrop="static" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button class="close" type="button" data-dismiss="modal">&times;</button>
+						<h4 id="modal-title" class="modal-title"></h4>
+					</div>
+					<div class="modal-body">
+						<?= form_open('#', ['id'=>'form-rules']); ?>
+							<div class="form-group">
+								<label class="control-label">Gejala</label>
+								<select name="gejala" id="gejala" class="form-control">
+									<option class="null" value="">Pilih Gejala...</option>
+									<?php foreach ($gejala as $key => $g): ?>
+										<option value="<?= $g->id_gejala; ?>"><?= $g->nama_gejala; ?></option>
+									<?php endforeach ?>
+								</select>
+							</div>
+							<div class="form-group">
+								<label class="control-label">Penyakit</label>
+								<select name="gejala" id="gejala" class="form-control">
+									<option class="null" value="">Pilih Penyakit...</option>
+									<?php foreach ($penyakit as $key => $p): ?>
+										<option value="<?= $p->id_penyakit; ?>"><?= $p->nama_penyakit; ?></option>
+									<?php endforeach ?>
+								</select>
+							</div>
+							<div class="form-group">
+								<label class="control-label">Bobot Gejala</label>
+								<select name="bobot_gejala" id="bobot_gejala" class="form-control">
+									<option class="null" value="">Pilih Bobot Gejala...</option>
+									<?php for ($i = 0.1; $i <= 0.9; $i = $i + 0.1) : ?>
+										<option value="<?= $i;?>"><?= $i;?></option>
+									<?php endfor ?>
+								</select>
+							</div>
+						
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-danger text-uppercase" id="btn-batal" data-dismiss="modal" onclick="resetForm()">Batal</button>
+						<button type="submit" class="btn btn-primary text-uppercase" id="btn-submit">Submit</button>
+						<?= form_close(); ?>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- END MODAL RULES -->
 
 		<div class="clearfix"></div>
 		<footer>
@@ -111,11 +161,11 @@
 	<script src="<?php echo base_url('assets/vendor/sweetalert/sweetalert.min.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/vendor/datatable/media/js/jquery.dataTables.min.js') ?>"></script>
 	<script src="<?php echo base_url('assets/vendor/datatable/media/js/dataTables.bootstrap.min.js') ?>"></script>
-	<script src="<?= base_url('assets/vendor/jquery-blockUI/jquery.blockUI.js') ?>"></script>
+	<script src="<?php echo base_url('assets/vendor/jquery-blockUI/jquery.blockUI.js') ?>"></script>
 
 	<!-- DATATABLE SCRIPT -->
 	<script>
-		var dataTable, msg= '';
+		var msg = '';
 
 		function getData(num) {
 			var search = $('#search').val();
@@ -132,7 +182,6 @@
 					});
 				},
 				success: function(response){
-					console.log(response);
 					$('#data-rules').html(response);
 					$('#data-rules').unblock();
 				},
@@ -154,6 +203,121 @@
 				getData(0);
 			});
 
+			// FORM SUBMIT
+			$('#form-gejala').on('submit', function(e) {
+				e.preventDefault();
+				var form = $(this);
+
+				$.ajax({
+					url: url,
+					data: form.serialize(),
+					type: 'post',
+					dataType: 'json',
+					success: (result) => {
+						console.log(result);
+						if(result.success == true) {
+							resetForm();
+							$('#modal-gejala').modal('hide');
+							swal("Sukses!", msg, "success")
+							.then((value) => {
+								getData(0);
+							});
+						} else {
+							$.each(result.messages, (key, val) => {
+								var el = $('#' + key);
+
+								el.closest('div.form-group')
+									.removeClass('has-error')
+									.removeClass('has-success')
+									.addClass(val.length > 0 ? 'has-error' : 'has-success')
+									.find('.help-block')
+									.remove();
+
+								el.after(val);
+							});
+						}
+					},
+					error: (xhr, stat, err) => {
+						console.error(err);
+					}
+				});
+
+			});
+			// END FORM SUBMIT
+
 		});
+
+		function submit(arg) {
+			$('#modal-rules').modal('show');
+
+			if(arg == 'tambah') {
+				$('.modal-title').text('Tambah Gejala');
+				url = '<?php echo base_url('admin/rules/tambah') ?>';
+				msg = 'Berhasil menambahkan rules';
+			} else {
+				url = '<?php echo base_url('admin/rules/ubah') ?>';
+				$('.modal-title').text('Ubah rules');
+				msg = 'Berhasil mengubah data rules';
+
+				$.ajax({
+					url: '<?php echo base_url('admin/rules/get_id') ?>',
+					type: 'post',
+					data: 'id_gejala='+arg,
+					dataType: 'json',
+					success: (res) => {
+						$('[name="id_gejala"]').val(res.id_gejala);
+						$('[name="kode_gejala_2"]').val(res.kode_gejala);
+						$('#nama_gejala').val(res.nama_gejala);
+						$('#kode_gejala').val(res.kode_gejala);
+					},
+					error: (xhr, stat, err) => {
+						console.error(xhr + stat + err);
+					}
+				});
+			}
+		}
+
+		function resetForm() {
+			$('div.form-group')
+			.removeClass('has-error')
+			.removeClass('has-success')
+			.find('.help-block')
+			.remove();
+
+			$('#form-rules')[0].reset();
+		}
+
+		function hapus(id) {
+			swal({
+			  title: "",
+			  text: "Menghapus data rules akan menghapus data pada gejala dan penyakit, tetap lanjutkan?",
+			  icon: "warning",
+			  buttons: ['Batal', 'Hapus'],
+			  animation: true,
+			  showConfirmButton: true,
+			  showCancelButton: true,
+			  confirmButtonText: 'Hapus',
+			  confirmButtonColor: '#8CD4F5',
+			})
+			.then((value) => {
+			  if(value) {
+			  	$.ajax({
+				  	url: '<?= base_url('admin/rules/hapus') ?>',
+				  	data: 'id_gejala='+id,
+				  	type: 'post',
+				  	dataType: 'json',
+				  	success: res => {
+				  		if(res.success == true) {
+				  			swal('','Berhasil menghapus rules', 'success').then((val) => {getData(0);});
+				  		}
+				  	},
+				  	error: (xhr, stat, err) => {
+				  		console.log(xhr + stat + err);
+				  		swal('','Gagal menghapus rules', 'error').then((val) => {getData(0);});
+				  	}
+				  });
+			  }
+			});
+		}
 
 	</script>

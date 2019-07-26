@@ -17,7 +17,7 @@
 
       <div id="navbar-menu">
         <ul class="nav navbar-nav">
-          <li class="navbar-link">
+          <!-- <li class="navbar-link">
             <a href="<?php echo base_url('home') ?>" title="Home" class="active"><span class="lnr lnr-home"></span> Home</a>
           </li>    
           <li class="navbar-link">
@@ -28,7 +28,7 @@
           </li>    
           <li class="navbar-link">
             <a href="<?php echo base_url('tentang-kami') ?>" title="Tentang Kami"><span class="lnr lnr-code"></span> Tentang Kami</a>
-          </li>    
+          </li>     -->
         </ul>
 
       <?php if($this->session->has_userdata('logged_in')) { ?>
@@ -48,7 +48,7 @@
                 </li>
                 <li class="divider"></li>
                 <li>
-                  <a href="<?= base_url('member/diagnose'); ?>"><i class="lnr lnr-bug"></i> <span>Diagnose</span></a>
+                  <a href="<?= base_url('member/home'); ?>"><i class="lnr lnr-bug"></i> <span>Diagnose</span></a>
                 </li>
                 <li class="divider"></li>
                 <li>
@@ -81,15 +81,11 @@
 			<?php foreach ($news as $row): ?>
 				<!-- PANEL -->
 				<div class="panel">
-					<div class="panel-heading">
-						<div class="right">
-							<button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
-						</div>
-						<h3 class="panel-title"><?= $row->title; ?></h3>
-						<p class="lead" style="font-size: 15px">Posting by : <?= '<strong>'.$row->name.'</strong> | '.$row->date.' | '.$row->time; ?></p>
-
-					</div>
 					<div class="panel-body">
+						<p class="panel-title f-18"><?= $row->title; ?></p>
+						<p class="lead gray" style="font-size: 15px">Posting by : <?= '<strong>'.$row->name.'</strong> &nbsp;&nbsp; <i class="fa fa-calendar"></i> '. date('D, d M Y', strtotime($row->date)) .' - ' . date('H:i', strtotime($row->time)); ?></p>
+					<!-- </div>
+					<div class="panel-body"> -->
 						<p class="text-justify"><?= $row->description; ?></p>
 					</div>
 				</div>

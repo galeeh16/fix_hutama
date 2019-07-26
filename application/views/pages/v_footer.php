@@ -8,6 +8,7 @@
   .footer p {
     line-height: 48px;
     font-weight: 100;
+    font-family: 'OpenSans';
   }
   #scroll {
     position: fixed;
@@ -48,6 +49,8 @@
   $(document).ready(function(){
     slideText();
 
+    $('[data-toggle="tooltip"]').tooltip(); 
+
     // Add smooth scrolling to all links
     $(".navbar-link").on('click', function(event) {
       var href = $(this).find('a').attr('href');
@@ -77,9 +80,6 @@
   	var scrollHeight = $(document).height();
   	var scrollPosition = $(window).height() + $(window).scrollTop();
   	if ((scrollHeight - scrollPosition) / scrollHeight === 0) {
-      // $('#scroll').fadeIn('slow', function() {
-      //   $(".slide-text span").css('display', 'none');
-      // });
       $('#scroll').css('bottom', '1.5em', function() {
         $(".slide-text span").css('display', 'none');
       });
